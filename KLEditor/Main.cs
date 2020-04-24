@@ -378,13 +378,13 @@ namespace KLEditor
         private void fontNameComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             Font current = GetRTBFont();
-            richTextBox.SelectionFont = new Font(fontNameComboBox.SelectedItem.ToString(), current.Size);
+            richTextBox.SelectionFont = new Font(fontNameComboBox.SelectedItem.ToString(), current.Size,current.Style);
         }
 
         private void fontSizeComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             Font current = GetRTBFont();
-            richTextBox.SelectionFont = new Font(current.FontFamily, float.Parse(fontSizeComboBox.SelectedItem.ToString()));
+            richTextBox.SelectionFont = new Font(current.FontFamily, float.Parse(fontSizeComboBox.SelectedItem.ToString()), current.Style);
         }
 
         private void formatToolStripMenuItem_DropDownOpening(object sender, EventArgs e)
@@ -457,7 +457,7 @@ namespace KLEditor
             Regex regex = new Regex(pattern, optons);
             int cnt = 0;
             var match = regex.Match(richTextBox.Rtf);
-
+            //regex.Matches(richTextBox.Rtf).Count
             while (match != null && match.Success)
             {
                 cnt++;

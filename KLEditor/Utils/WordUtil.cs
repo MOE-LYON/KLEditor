@@ -18,8 +18,10 @@ namespace KLEditor.Utils
             byte[] dataBytes = encoding.GetBytes(content);
             MemoryStream stream = new MemoryStream(dataBytes);
 
-            LoadOptions loadOptions = new LoadOptions();
-            loadOptions.LoadFormat = LoadFormat.Rtf;
+            LoadOptions loadOptions = new LoadOptions
+            {
+                LoadFormat = LoadFormat.Rtf
+            };
             Document doc = new Document(stream, loadOptions);
 
             Stream outstream = File.OpenWrite(fileName);
